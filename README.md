@@ -9,7 +9,7 @@ les bases HTML / CSS / JavaScript à travers un mini-jeu ludique et éducatif.
 - Questions à choix multiples générées dynamiquement depuis un tableau JavaScript
 - Vérification de la réponse en temps réel (feedback visuel vert / rouge)
 - Calcul du score au fur et à mesure du quiz
-- Timer de 15 secondes par question, avec validation automatique en cas de temps écoulé
+- Timer de 20 secondes par question, avec validation automatique en cas de temps écoulé
 - Barre de progression visuelle indiquant l'avancement dans le quiz
 - Écran de résultats final avec score, pourcentage, message personnalisé et bouton "Rejouer"
 - Design personnalisé (thème sombre "nuit tech africaine", polices Space Grotesk / Inter / IBM Plex Mono)
