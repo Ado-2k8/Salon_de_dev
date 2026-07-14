@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Level Up Africa — Quiz Culture Tech & Innovation Africaine. Teste tes connaissances sur l'écosystème tech africain." />
+  <title>Level Up Africa — Quiz Tech &amp; Innovation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════ BACKGROUND FX ═══════════════════════════ -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--2" aria-hidden="true"></div>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- ═══════════════════════════ APP WRAPPER ═════════════════════════════ -->
+  <div class="app-wrapper">
+
+    <!-- ─── HEADER ─────────────────────────────────────────────────────── -->
+    <header class="app-header" role="banner">
+      <div class="header-brand">
+        <div class="brand-logo" aria-hidden="true">
+          <span class="logo-ring"></span>
+          <span class="logo-icon">🌍</span>
+        </div>
+        <div class="brand-text">
+          <h1 class="brand-title">Level Up Africa</h1>
+          <p class="brand-tagline" id="tagline">Deviens le "Future Elon Musk africain" !</p>
+        </div>
+      </div>
+      <div class="header-controls">
+        <div class="lang-toggle" role="group" aria-label="Sélection langue">
+          <button class="lang-btn active" data-lang="fr" aria-pressed="true">FR</button>
+          <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button id="sound-toggle" class="icon-btn" aria-label="Sons activés" title="Activer/désactiver les sons">
+          <span class="icon-btn__icon">🔊</span>
+        </button>
+        <button id="theme-toggle" class="icon-btn" aria-label="Basculer le thème" title="Changer le thème">
+          <span class="icon-btn__icon">Dark</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ─── MAIN CONTENT AREA ──────────────────────────────────────────── -->
+    <main class="app-main" id="app-main" role="main">
+
+      <!-- ══ SCREEN 1 : WELCOME ══════════════════════════════════════════ -->
+      <section class="screen screen--welcome active" id="screen-welcome" aria-label="Écran de bienvenue">
+        <div class="welcome-hero">
+          <div class="welcome-badge">
+            <span class="badge-dot"></span>
+            <span id="welcome-badge-text">Tech Africaine • Innovation • Futur</span>
+          </div>
+          <h2 class="welcome-title" id="welcome-title">Commence ton aventure tech</h2>
+          <p class="welcome-desc" id="welcome-desc">
+            Découvre le meilleur de l'innovation africaine avec ce quiz conçu pour t'inspirer et te challenger.
+          </p>
+
+          <div class="welcome-stats">
+            <div class="stat-card">
+              <span class="stat-number">20</span>
+              <span class="stat-label" id="stat-questions">Questions</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">20s</span>
+              <span class="stat-label" id="stat-timer">Par question</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">5</span>
+              <span class="stat-label" id="stat-themes">Thèmes</span>
+            </div>
+          </div>
+
+          <button class="btn-primary btn-start pulse-anim" id="start-btn" type="button">
+            <span id="start-btn-text">Commencer le Quiz</span>
+            <span class="btn-arrow">→</span>
+          </button>
+
+          <p class="welcome-hint" id="welcome-hint">Aucune inscription requise · Résultats instantanés</p>
+        </div>
+
+        <!-- decorative floating chips -->
+        <div class="float-chips" aria-hidden="true">
+          <span class="chip chip--1">Fintech </span>
+          <span class="chip chip--2">AgriTech </span>
+          <span class="chip chip--3">EdTech </span>
+          <span class="chip chip--4">HealthTech</span>
+          <span class="chip chip--5">AI</span>
+        </div>
+      </section>
+
+      <!-- ══ SCREEN 2 : QUIZ ═════════════════════════════════════════════ -->
+      <section class="screen screen--quiz" id="screen-quiz" aria-label="Quiz" aria-live="polite">
+
+        <!-- Status bar -->
+        <div class="status-bar" role="status" aria-label="Progression du quiz">
+          <div class="status-progress">
+            <div class="status-label" id="progress-label">Progression</div>
+            <div class="status-track">
+              <div class="status-fill" id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="status-count" id="progress-count">1 / 20</div>
+          </div>
+          <div class="status-score">
+            <div class="status-label" id="score-label">Score</div>
+            <div class="score-display" id="score-display">
+              <span id="score-value">0</span>
+              <span class="score-max" id="score-max">/ 20</span>
+            </div>
+          </div>
+          <div class="status-timer">
+            <div class="status-label" id="timer-label">Temps</div>
+            <div class="timer-ring" id="timer-ring" aria-hidden="true">
+              <svg viewBox="0 0 44 44" class="timer-svg">
+                <circle class="timer-track" cx="22" cy="22" r="18" />
+                <circle class="timer-arc" cx="22" cy="22" r="18" id="timer-arc" />
+              </svg>
+              <span class="timer-num" id="timer-text">20</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question card -->
+        <div class="question-card" id="question-card">
+          <div class="question-category" id="question-category">
+            <span class="category-dot"></span>
+            <span id="category-text">Fintech</span>
+          </div>
+          <p class="question-text" id="question-text">Chargement…</p>
+          <div class="options-grid" id="options-grid" role="list"></div>
+          <div class="feedback-bar" id="feedback-bar" role="alert" aria-live="assertive">
+            <span class="feedback-icon" id="feedback-icon"></span>
+            <span class="feedback-text" id="feedback-text"></span>
+          </div>
+        </div>
+
+        <button class="btn-primary btn-next hidden" id="next-btn" type="button" aria-label="Question suivante">
+          <span id="next-btn-text">Suivant</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </section>
+
+      <!-- ══ SCREEN 3 : RESULTS ══════════════════════════════════════════ -->
+      <section class="screen screen--results" id="screen-results" aria-label="Résultats du quiz">
+        <div class="results-hero">
+          <div class="results-trophy" id="results-trophy" aria-hidden="true"></div>
+          <h2 class="results-title" id="results-title">Résultats</h2>
+          <p class="results-status" id="results-status"></p>
+          <p class="results-message" id="results-message"></p>
+
+          <div class="results-score-ring">
+            <svg class="score-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="score-ring-track" cx="60" cy="60" r="50" />
+              <circle class="score-ring-fill" cx="60" cy="60" r="50" id="score-ring-fill" />
+            </svg>
+            <div class="score-ring-center">
+              <span class="score-ring-pct" id="score-ring-pct">0%</span>
+              <span class="score-ring-label" id="score-ring-sub">0 / 20</span>
+            </div>
+          </div>
+
+          <div class="results-stats">
+            <div class="result-stat" id="result-correct-card">
+              <span class="result-stat__num" id="result-correct">0</span>
+              <span class="result-stat__label" id="result-correct-label">Correctes</span>
+            </div>
+            <div class="result-stat" id="result-wrong-card">
+              <span class="result-stat__num" id="result-wrong">0</span>
+              <span class="result-stat__label" id="result-wrong-label">Incorrectes</span>
+            </div>
+            <div class="result-stat" id="result-time-card">
+              <span class="result-stat__num" id="result-time">0s</span>
+              <span class="result-stat__label" id="result-time-label">Temps total</span>
+            </div>
+          </div>
+
+          <p class="results-note hidden" id="results-note"></p>
+
+          <div class="results-actions">
+            <button class="btn-primary" id="restart-btn" type="button">
+              <span id="restart-btn-text">Recommencer</span>
+              <span class="btn-arrow">↺</span>
+            </button>
+            <button class="btn-secondary" id="share-btn" type="button">
+              <span id="share-btn-text">Partager</span>
+              <span class="btn-arrow">↗</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ─── TOAST NOTIFICATION ────────────────────────────────────────── -->
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  </div><!-- /.app-wrapper -->
+
+  <script src="script.js"></script>
+</body>
+</html>
