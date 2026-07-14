@@ -9,9 +9,11 @@ les bases HTML / CSS / JavaScript à travers un mini-jeu ludique et éducatif.
 - Questions à choix multiples générées dynamiquement depuis un tableau JavaScript
 - Vérification de la réponse en temps réel (feedback visuel vert / rouge)
 - Calcul du score au fur et à mesure du quiz
-- Timer par question
-- Barre de progression
-- Écran de résultats final personnalisé
+- Timer de 15 secondes par question, avec validation automatique en cas de temps écoulé
+- Barre de progression visuelle indiquant l'avancement dans le quiz
+- Écran de résultats final avec score, pourcentage, message personnalisé et bouton "Rejouer"
+- Design personnalisé (thème sombre "nuit tech africaine", polices Space Grotesk / Inter / IBM Plex Mono)
+- Responsive mobile et accessible au clavier (focus visible, respect du mode mouvement réduit)
 
 ## Stack technique
 - HTML5
@@ -42,11 +44,11 @@ Salon_de_dev/
 ```
 
 ## Roadmap
-- [x] J1-J2 — Structure du quiz (données + affichage dynamique)
-- [x] J3 — Système de score et feedback
-- [x] J4 — Timer par question + barre de progression
-- [x] J5 — Écran de résultats
-- [x] J6-J7 — Design final + déploiement GitHub Pages
+- J1-J2 — Structure du quiz (données + affichage dynamique)
+- J3 — Système de score et feedback
+- J4 — Timer par question + barre de progression
+- J5 — Écran de résultats
+- J6-J7 — Design final + déploiement GitHub Pages
 
 ## Auteur
 Projet réalisé par **Adorée KPENONHOUN** dans le cadre du programme Level Up Africa.
